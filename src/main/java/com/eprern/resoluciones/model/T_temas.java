@@ -13,7 +13,8 @@ public class T_temas {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int t_temasid;
+    @Getter @Setter
+    private Long t_temasid;
 
     @Getter @Setter
     private String t_temasdescripcion;
@@ -21,7 +22,9 @@ public class T_temas {
     @Getter @Setter
     private int t_temaslotusid;
     
-    public T_temas(int t_temasid, String t_temasdescripcion, int t_temaslotusid) {
+    
+    
+    public T_temas(Long t_temasid, String t_temasdescripcion, int t_temaslotusid) {
         this.t_temasid = t_temasid;
         this.t_temasdescripcion = t_temasdescripcion;
         this.t_temaslotusid = t_temaslotusid;

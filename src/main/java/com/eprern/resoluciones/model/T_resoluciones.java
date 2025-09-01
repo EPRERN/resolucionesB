@@ -20,8 +20,11 @@ public class T_resoluciones {
     @Getter @Setter
     private String t_resolucionesnro;
     
+    @ManyToOne
+    @JoinColumn(name = "t_distribuidorasid", nullable = false)
     @Getter @Setter
-    private int t_distribuidorasid;
+    private T_distribuidoras distribuidora;
+    
     
     @Getter @Setter
     private int t_temasid;
@@ -43,10 +46,10 @@ public class T_resoluciones {
     @Getter @Setter
     private Date t_resolucionesdate;
     
-    public T_resoluciones(int t_resolucionesid, String t_resolucionesnro, int t_distribuidorasid, int t_temasid, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
+    public T_resoluciones(int t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, int t_temasid, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
         this.t_resolucionesid = t_resolucionesid;
         this.t_resolucionesnro = t_resolucionesnro;
-        this.t_distribuidorasid = t_distribuidorasid;
+        this.distribuidora = distribuidora;
         this.t_temasid = t_temasid;
         this.t_resolucionesblob = t_resolucionesblob;
         this.t_resolucionesexpte = t_resolucionesexpte;
@@ -54,6 +57,8 @@ public class T_resoluciones {
         this.t_resolucionesexptecaratula = t_resolucionesexptecaratula;
         this.t_resolucionesdate = t_resolucionesdate;
     }
+    
+
     
     public T_resoluciones(){}
 

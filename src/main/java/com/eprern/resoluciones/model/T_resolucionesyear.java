@@ -13,13 +13,13 @@ public class T_resolucionesyear {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int t_resolucionesyearid;
+    @Getter @Setter
+    private Long t_resolucionesyearid;
 
     @Getter @Setter
     private int t_resolucionesyearnumber;
     
-    
-    public T_resolucionesyear(int t_resolucionesyearid, int t_resolucionesyearnumber) {
+    public T_resolucionesyear(long t_resolucionesyearid, int t_resolucionesyearnumber) {
         this.t_resolucionesyearid = t_resolucionesyearid;
         this.t_resolucionesyearnumber = t_resolucionesyearnumber;
     }
