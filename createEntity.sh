@@ -25,7 +25,7 @@ basePath="src/main/java/com/eprern/resoluciones"
 # Crear directorios necesarios si no existen
 mkdir -p ${basePath}/model
 mkdir -p ${basePath}/repository
-mkdir -p ${basePath}/servicio
+mkdir -p ${basePath}/service
 mkdir -p ${basePath}/rest
 
 # Crear archivo de entidad
@@ -71,8 +71,8 @@ public interface ${entityName}Repository extends JpaRepository<${entityName}, Lo
 EOT
 
 # Crear archivo de services
-cat <<EOT >> ${basePath}/servicio/${entityName}Service.java
-package com.eprern.resoluciones.servicio;
+cat <<EOT >> ${basePath}/service/${entityName}Service.java
+package com.eprern.resoluciones.service;
 
 import com.eprern.resoluciones.model.${entityName};
 import com.eprern.resoluciones.repository.${entityName}Repository;
@@ -121,7 +121,7 @@ cat <<EOT >> ${basePath}/rest/${entityName}Controller.java
 package com.eprern.resoluciones.rest;
 
 import com.eprern.resoluciones.model.${entityName};
-import com.eprern.resoluciones.servicio.${entityName}Service;
+import com.eprern.resoluciones.service.${entityName}Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.eprern.resoluciones.rest;
 
 import com.eprern.resoluciones.model.T_temas;
-import com.eprern.resoluciones.servicio.T_temasService;
+import com.eprern.resoluciones.service.T_temasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

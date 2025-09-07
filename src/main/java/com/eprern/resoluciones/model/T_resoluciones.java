@@ -7,6 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.util.Date;
 
@@ -15,7 +17,8 @@ public class T_resoluciones {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int t_resolucionesid;
+    @Getter @Setter
+    private Long t_resolucionesid;
 
     @Getter @Setter
     private String t_resolucionesnro;
@@ -28,11 +31,13 @@ public class T_resoluciones {
     
     @Getter @Setter
     private int t_temasid;
+
     
     @Getter @Setter
-    @Lob  // Indica que es un campo grande (Large OBject)
-    @Column(columnDefinition = "bytea")
+    @Column(columnDefinition = "bytea", nullable = true)
+    @JdbcTypeCode(SqlTypes.BINARY)
     private byte[] t_resolucionesblob;
+    
     
     @Getter @Setter
     private String t_resolucionesexpte;
@@ -46,7 +51,8 @@ public class T_resoluciones {
     @Getter @Setter
     private Date t_resolucionesdate;
     
-    public T_resoluciones(int t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, int t_temasid, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
+    
+    public T_resoluciones(Long t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, int t_temasid, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
         this.t_resolucionesid = t_resolucionesid;
         this.t_resolucionesnro = t_resolucionesnro;
         this.distribuidora = distribuidora;
@@ -57,8 +63,6 @@ public class T_resoluciones {
         this.t_resolucionesexptecaratula = t_resolucionesexptecaratula;
         this.t_resolucionesdate = t_resolucionesdate;
     }
-    
-
     
     public T_resoluciones(){}
 

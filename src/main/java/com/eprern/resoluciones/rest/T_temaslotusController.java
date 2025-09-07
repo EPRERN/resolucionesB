@@ -1,7 +1,7 @@
 package com.eprern.resoluciones.rest;
 
 import com.eprern.resoluciones.model.T_temaslotus;
-import com.eprern.resoluciones.servicio.T_temaslotusService;
+import com.eprern.resoluciones.service.T_temaslotusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
