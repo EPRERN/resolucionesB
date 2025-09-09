@@ -1,4 +1,4 @@
-package com.eprern.resoluciones.servicio;
+package com.eprern.resoluciones.service;
 
 import com.eprern.resoluciones.model.T_temas;
 import com.eprern.resoluciones.repository.T_temasRepository;

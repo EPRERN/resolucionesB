@@ -1,8 +1,7 @@
 package com.eprern.resoluciones.rest;
 
 import com.eprern.resoluciones.model.T_resoluciones;
-import com.eprern.resoluciones.servicio.T_resolucionesService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.eprern.resoluciones.service.T_resolucionesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

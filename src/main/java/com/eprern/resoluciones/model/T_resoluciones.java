@@ -27,10 +27,12 @@ public class T_resoluciones {
     @JoinColumn(name = "t_distribuidorasid", nullable = false)
     @Getter @Setter
     private T_distribuidoras distribuidora;
-    
-    
-    @Getter @Setter
-    private int t_temasid;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "t_temasid", nullable = false)
+	private T_temas tema;
+
     
     @Getter @Setter
     @Column(columnDefinition = "bytea", nullable = true)
@@ -48,21 +50,21 @@ public class T_resoluciones {
     
     @Getter @Setter
     private Date t_resolucionesdate;
-    
-    
-    public T_resoluciones(Long t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, int t_temasid, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
-        this.t_resolucionesid = t_resolucionesid;
-        this.t_resolucionesnro = t_resolucionesnro;
-        this.distribuidora = distribuidora;
-        this.t_temasid = t_temasid;
-        this.t_resolucionesblob = t_resolucionesblob;
-        this.t_resolucionesexpte = t_resolucionesexpte;
-        this.t_resolucionestitulo = t_resolucionestitulo;
-        this.t_resolucionesexptecaratula = t_resolucionesexptecaratula;
-        this.t_resolucionesdate = t_resolucionesdate;
-    }
-    
-    public T_resoluciones(){}
+	
+	
+	public T_resoluciones(Long t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, T_temas tema, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
+		this.t_resolucionesid = t_resolucionesid;
+		this.t_resolucionesnro = t_resolucionesnro;
+		this.distribuidora = distribuidora;
+		this.tema = tema;
+		this.t_resolucionesblob = t_resolucionesblob;
+		this.t_resolucionesexpte = t_resolucionesexpte;
+		this.t_resolucionestitulo = t_resolucionestitulo;
+		this.t_resolucionesexptecaratula = t_resolucionesexptecaratula;
+		this.t_resolucionesdate = t_resolucionesdate;
+	}
+	
+	public T_resoluciones(){}
 
 
 }
