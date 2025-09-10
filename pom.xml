@@ -75,6 +75,18 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.5.5</version> <!-- ajustá a la versión que uses -->
+                <configuration>
+                    <jvmArguments>-Xms512m -Xmx2048m</jvmArguments>
+                </configuration>
+            </plugin>
+
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

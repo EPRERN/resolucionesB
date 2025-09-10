@@ -31,6 +31,7 @@ public class T_resoluciones {
 	
 	@ManyToOne
 	@JoinColumn(name = "t_temasid", nullable = false)
+	@Getter @Setter
 	private T_temas tema;
 
     
