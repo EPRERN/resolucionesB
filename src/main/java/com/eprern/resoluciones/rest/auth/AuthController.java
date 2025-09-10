@@ -1,8 +1,11 @@
 package com.eprern.resoluciones.rest.auth;
 
+
+import com.eprern.resoluciones.dto.LoginResponse;
 import com.eprern.resoluciones.model.Usuario;
 import com.eprern.resoluciones.service.auth.AuthService;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/api/auth")
@@ -16,7 +19,10 @@ public class AuthController {
     }
     
     @PostMapping("/login")
-    public boolean login(@RequestBody Usuario loginRequest) {
-        return authService.login(loginRequest.getUsername(), loginRequest.getPassword());
+    public LoginResponse login(@RequestBody Usuario loginRequest) {
+        return authService.login(loginRequest.getUsername(), loginRequest.getPassword())
+                .map(user -> new LoginResponse(true, user.getRol().name()))
+                .orElse(new LoginResponse(false, null));
     }
+    
 }

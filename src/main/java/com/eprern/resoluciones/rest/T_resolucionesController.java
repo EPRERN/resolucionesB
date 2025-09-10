@@ -1,7 +1,6 @@
 package com.eprern.resoluciones.rest;
 
 import com.eprern.resoluciones.model.T_resoluciones;
-import com.eprern.resoluciones.repository.T_resolucionesRepository;
 import com.eprern.resoluciones.service.T_resolucionesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,16 +12,13 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
-
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/t_resolucioness")
 public class T_resolucionesController {
-    @Autowired
-    private T_resolucionesService t_resolucionesService;
     
     @Autowired
-    private T_resolucionesRepository t_resolucionesRepository;
+    private T_resolucionesService t_resolucionesService;
     
     // Crear resolución con PDF
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -41,7 +37,7 @@ public class T_resolucionesController {
     
     
     // Descargar PDF
-    @GetMapping("/{id}/download")
+    @GetMapping("/{id}/file")
     public ResponseEntity<byte[]> descargarArchivo(@PathVariable Long id) {
         T_resoluciones resolucion = t_resolucionesService.getT_resolucionesById(id);
         
@@ -51,18 +47,6 @@ public class T_resolucionesController {
                 .body(resolucion.getT_resolucionesblob());
     }
     
-    
-    @GetMapping("/{id}/file")
-    public ResponseEntity<byte[]> getFile(@PathVariable Long id) {
-        T_resoluciones resolucion = t_resolucionesRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Resolución no encontrada"));
-        
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=archivo.pdf")
-                .body(resolucion.getT_resolucionesblob());
-    }
-
     
     
     

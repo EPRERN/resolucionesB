@@ -1,7 +1,10 @@
 package com.eprern.resoluciones.service.auth;
 
+import com.eprern.resoluciones.model.Usuario;
 import com.eprern.resoluciones.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class AuthService {
@@ -12,9 +15,9 @@ public class AuthService {
         this.usuarioRepository = usuarioRepository;
     }
     
-    public boolean login(String username, String password) {
+    public Optional<Usuario> login(String username, String password) {
         return usuarioRepository.findByUsername(username)
-                .map(user -> user.getPassword().equals(password)) // acá deberías usar BCrypt
-                .orElse(false);
+                .filter(user -> user.getPassword().equals(password)); // ideal: usar BCrypt
     }
+    
 }

@@ -14,12 +14,12 @@ import java.util.Date;
 
 @Entity
 public class T_resoluciones {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Long t_resolucionesid;
-
+    
     @Getter @Setter
     private String t_resolucionesnro;
     
@@ -29,15 +29,16 @@ public class T_resoluciones {
     private T_distribuidoras distribuidora;
     
     
+    @ManyToOne
+    @JoinColumn(name = "t_temasid", nullable = false)
     @Getter @Setter
-    private int t_temasid;
-
+    private T_temas tema;
+    
     
     @Getter @Setter
     @Column(columnDefinition = "bytea", nullable = true)
     @JdbcTypeCode(SqlTypes.BINARY)
     private byte[] t_resolucionesblob;
-    
     
     @Getter @Setter
     private String t_resolucionesexpte;
@@ -52,11 +53,11 @@ public class T_resoluciones {
     private Date t_resolucionesdate;
     
     
-    public T_resoluciones(Long t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, int t_temasid, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
+    public T_resoluciones(Long t_resolucionesid, String t_resolucionesnro, T_distribuidoras distribuidora, T_temas tema, byte[] t_resolucionesblob, String t_resolucionesexpte, String t_resolucionestitulo, String t_resolucionesexptecaratula, Date t_resolucionesdate) {
         this.t_resolucionesid = t_resolucionesid;
         this.t_resolucionesnro = t_resolucionesnro;
         this.distribuidora = distribuidora;
-        this.t_temasid = t_temasid;
+        this.tema = tema;
         this.t_resolucionesblob = t_resolucionesblob;
         this.t_resolucionesexpte = t_resolucionesexpte;
         this.t_resolucionestitulo = t_resolucionestitulo;
@@ -65,6 +66,6 @@ public class T_resoluciones {
     }
     
     public T_resoluciones(){}
-
-
+    
+    
 }
